@@ -1,0 +1,14 @@
+{
+	"name": "Baddies",
+	"plugin-id": "Sprite",
+	"sid": 703083700198441,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"Side_enemy",
+		"ShootyLilGuy",
+		"gun",
+		"flyguy"
+	]
+}

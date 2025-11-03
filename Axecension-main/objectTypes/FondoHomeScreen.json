@@ -1,0 +1,52 @@
+{
+	"name": "FondoHomeScreen",
+	"plugin-id": "Sprite",
+	"sid": 595146872222346,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 1602,
+						"height": 1230,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3104855,
+						"collisionPoly": {
+							"points": [
+								0.0006242197253433209,
+								0.0008130081300813008,
+								0.9993757802746567,
+								0.0008130081300813008,
+								0.9993757802746567,
+								0.9991869918699187,
+								0.0006242197253433209,
+								0.9991869918699187
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 997820967711097,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

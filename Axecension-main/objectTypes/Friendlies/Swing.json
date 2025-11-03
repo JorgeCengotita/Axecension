@@ -1,0 +1,52 @@
+{
+	"name": "Swing",
+	"plugin-id": "Sprite",
+	"sid": 188642819296374,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 243,
+						"height": 122,
+						"originX": 0.5185185185185185,
+						"originY": 0.2459016393442623,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7660102,
+						"collisionPoly": {
+							"points": [
+								0.00411522633744856,
+								0,
+								1,
+								0,
+								1,
+								1,
+								0.00411522633744856,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 747616487156057,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

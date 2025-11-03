@@ -1,0 +1,1363 @@
+{
+	"name": "Omnicode",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "DPHP",
+			"type": "number",
+			"initialValue": "5",
+			"comment": "The players HP",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 724552122786673
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "DP",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "CanDash",
+					"type": "boolean",
+					"initialValue": "true",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 863287528117920
+				},
+				{
+					"eventType": "variable",
+					"name": "CanDjump",
+					"type": "boolean",
+					"initialValue": "true",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 799708732163376
+				},
+				{
+					"eventType": "variable",
+					"name": "CanGun",
+					"type": "boolean",
+					"initialValue": "true",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 653977885014717
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Controls",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "Attacktimer",
+							"type": "number",
+							"initialValue": "0.2",
+							"comment": "Delay between attacks",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 310334773648694
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 935503828575323,
+									"parameters": {
+										"key": 39
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-mirrored",
+									"objectClass": "DP",
+									"sid": 423051784146009,
+									"parameters": {
+										"state": "not-mirrored"
+									}
+								}
+							],
+							"sid": 311440265733003
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 617826369389837,
+									"parameters": {
+										"key": 37
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-mirrored",
+									"objectClass": "DP",
+									"sid": 557261807206857,
+									"parameters": {
+										"state": "mirrored"
+									}
+								}
+							],
+							"sid": 870236208920001
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 618508197227404,
+									"parameters": {
+										"key": 32
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 336152701004363,
+									"parameters": {
+										"key": 38
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 954548018315030,
+									"parameters": {
+										"first-value": "Attacktimer",
+										"comparison": 5,
+										"second-value": "0.2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "DP",
+									"sid": 406403730428935,
+									"parameters": {
+										"object": "Swing",
+										"layer": "0",
+										"image-point": "2",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 200478284168539,
+									"parameters": {
+										"variable": "Attacktimer",
+										"value": "0"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 647358552498106,
+									"parameters": {
+										"seconds": "0.2",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "destroy",
+									"objectClass": "Swing",
+									"sid": 780513720550243
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 993492643343932,
+									"parameters": {
+										"seconds": "0.2",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "reset-eventvar",
+									"objectClass": "System",
+									"sid": 670168195834464,
+									"parameters": {
+										"variable": "Attacktimer"
+									}
+								}
+							],
+							"sid": 461604143465316
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 246874216713388,
+									"parameters": {
+										"key": 32
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 280872743485938,
+									"parameters": {
+										"key": 40
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 914549335498183,
+									"parameters": {
+										"first-value": "Attacktimer",
+										"comparison": 0,
+										"second-value": "0.2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "DP",
+									"sid": 200051546439023,
+									"parameters": {
+										"object": "Swing",
+										"layer": "0",
+										"image-point": "3",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 351711220518648,
+									"parameters": {
+										"variable": "Attacktimer",
+										"value": "0"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 680364693420081,
+									"parameters": {
+										"seconds": "0.2",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "destroy",
+									"objectClass": "Swing",
+									"sid": 567489035289167
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 562088806750053,
+									"parameters": {
+										"seconds": "0.2",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "reset-eventvar",
+									"objectClass": "System",
+									"sid": 258699581688044,
+									"parameters": {
+										"variable": "Attacktimer"
+									}
+								}
+							],
+							"sid": 346991213488785
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 792120106926382,
+									"parameters": {
+										"key": 32
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 184710525280188,
+									"parameters": {
+										"first-value": "Attacktimer",
+										"comparison": 5,
+										"second-value": "0.2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "DP",
+									"sid": 362625345049765,
+									"parameters": {
+										"object": "Swing",
+										"layer": "0",
+										"image-point": "1",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 288703059076111,
+									"parameters": {
+										"variable": "Attacktimer",
+										"value": "0"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 615348885858488,
+									"parameters": {
+										"seconds": "0.2",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "destroy",
+									"objectClass": "Swing",
+									"sid": 138690744150921
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 853103228533558,
+									"parameters": {
+										"seconds": "0.2",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "reset-eventvar",
+									"objectClass": "System",
+									"sid": 604723918628688,
+									"parameters": {
+										"variable": "Attacktimer"
+									}
+								}
+							],
+							"sid": 763039678544041
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 300873442443668,
+									"parameters": {
+										"key": 81
+									}
+								},
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 763241623464985,
+									"parameters": {
+										"variable": "CanGun"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "DP",
+									"sid": 554532477620035,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "DP",
+									"sid": 185568998824095,
+									"parameters": {
+										"object": "DPgunR",
+										"layer": "0",
+										"image-point": "0",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 322229782017744,
+									"parameters": {
+										"seconds": "1.0",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "destroy",
+									"objectClass": "DPgunR",
+									"sid": 811761495021864
+								}
+							],
+							"sid": 975704616595349
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 495689285424054,
+									"parameters": {
+										"key": 81
+									}
+								},
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 445494118119955,
+									"parameters": {
+										"variable": "CanGun"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "DP",
+									"sid": 902449224209077
+								}
+							],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "DP",
+									"sid": 623799082858737,
+									"parameters": {
+										"object": "DPgunL",
+										"layer": "0",
+										"image-point": "0",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "rotate-clockwise",
+									"objectClass": "DPgunL",
+									"sid": 172482344176981,
+									"parameters": {
+										"degrees": "180"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 509591010895362,
+									"parameters": {
+										"seconds": "1.0",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "destroy",
+									"objectClass": "DPgunL",
+									"sid": 643182663161417
+								}
+							],
+							"sid": 184564796580852
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-released",
+									"objectClass": "Keyboard",
+									"sid": 607031720665728,
+									"parameters": {
+										"key": 69
+									}
+								},
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 369173943463844,
+									"parameters": {
+										"variable": "CanDash"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "DP",
+									"sid": 646913830262172,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "DP",
+									"sid": 935994495445957,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"state": "enabled"
+									}
+								},
+								{
+									"id": "set-speed",
+									"objectClass": "DP",
+									"sid": 439892239088550,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"speed": "1000"
+									}
+								},
+								{
+									"id": "set-max-fall-speed",
+									"objectClass": "DP",
+									"sid": 682891750755053,
+									"behaviorType": "Platform",
+									"parameters": {
+										"max-fall-speed": "0"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 946078021236422,
+									"parameters": {
+										"seconds": "1.0",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "set-max-fall-speed",
+									"objectClass": "DP",
+									"sid": 852233552471540,
+									"behaviorType": "Platform",
+									"parameters": {
+										"max-fall-speed": "1000"
+									}
+								},
+								{
+									"id": "set-speed",
+									"objectClass": "DP",
+									"sid": 343087744224462,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"speed": "0"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "DP",
+									"sid": 924194396632203,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"state": "disabled"
+									}
+								}
+							],
+							"sid": 466812144111636
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-released",
+									"objectClass": "Keyboard",
+									"sid": 145082835343240,
+									"parameters": {
+										"key": 69
+									}
+								},
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 614689166620272,
+									"parameters": {
+										"variable": "CanDash"
+									}
+								},
+								{
+									"id": "is-mirrored",
+									"objectClass": "DP",
+									"sid": 909494453926040
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "DP",
+									"sid": 539004965042252,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"state": "enabled"
+									}
+								},
+								{
+									"id": "set-speed",
+									"objectClass": "DP",
+									"sid": 574173823968591,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"speed": "-1000"
+									}
+								},
+								{
+									"id": "set-max-fall-speed",
+									"objectClass": "DP",
+									"sid": 739847900455823,
+									"behaviorType": "Platform",
+									"parameters": {
+										"max-fall-speed": "0"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 778546103649003,
+									"parameters": {
+										"seconds": "1.0",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "set-max-fall-speed",
+									"objectClass": "DP",
+									"sid": 334286495160483,
+									"behaviorType": "Platform",
+									"parameters": {
+										"max-fall-speed": "1000"
+									}
+								},
+								{
+									"id": "set-speed",
+									"objectClass": "DP",
+									"sid": 727217685510260,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"speed": "0"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "DP",
+									"sid": 732242347219893,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"state": "disabled"
+									}
+								}
+							],
+							"sid": 536349779041727
+						}
+					],
+					"sid": 649799119680848
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Swing",
+							"sid": 518650648027881,
+							"parameters": {
+								"object": "Baddies"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "Baddies",
+							"sid": 586575891567220
+						}
+					],
+					"sid": 851246963994126
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "DPgunR",
+							"sid": 262719911820912,
+							"parameters": {
+								"object": "Baddies"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "Baddies",
+							"sid": 245484335652603
+						}
+					],
+					"sid": 678859422139907
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 431651272178301
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 854571826215033,
+							"parameters": {
+								"variable": "CanDjump"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-double-jump",
+							"objectClass": "DP",
+							"sid": 227458367851678,
+							"behaviorType": "Platform",
+							"parameters": {
+								"state": "disabled"
+							}
+						}
+					],
+					"sid": 957004036983069
+				}
+			],
+			"sid": 783924907955553
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Baddies",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Side Enemy",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 925864726056178,
+									"parameters": {
+										"interval-seconds": "0.5"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "move-forward",
+									"objectClass": "Side_enemy",
+									"sid": 173931072324486,
+									"parameters": {
+										"distance": "150"
+									}
+								}
+							],
+							"sid": 781642872453537
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "Side_enemy",
+									"sid": 393359063948599,
+									"parameters": {
+										"object": "BonkboxR"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "rotate-clockwise",
+									"objectClass": "Side_enemy",
+									"sid": 820243618309532,
+									"parameters": {
+										"degrees": "180"
+									}
+								},
+								{
+									"id": "set-flipped",
+									"objectClass": "Side_enemy",
+									"sid": 900514039816651,
+									"parameters": {
+										"state": "flipped"
+									}
+								}
+							],
+							"sid": 826013929172694
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "Side_enemy",
+									"sid": 473499931545249,
+									"parameters": {
+										"object": "BonkboxL"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "rotate-clockwise",
+									"objectClass": "Side_enemy",
+									"sid": 387042739815118,
+									"parameters": {
+										"degrees": "180"
+									}
+								},
+								{
+									"id": "set-flipped",
+									"objectClass": "Side_enemy",
+									"sid": 121198603483635,
+									"parameters": {
+										"state": "not-flipped"
+									}
+								}
+							],
+							"sid": 708748227672346
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "Side_enemy",
+									"sid": 152584127722651,
+									"parameters": {
+										"object": "DP"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 355087960128586,
+									"parameters": {
+										"variable": "DPHP",
+										"value": "DPHP-1"
+									}
+								}
+							],
+							"sid": 206994061573267
+						}
+					],
+					"sid": 689659438550391
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Shootguy",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 495785987402231,
+									"parameters": {
+										"interval-seconds": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "ShootyLilGuy",
+									"sid": 586894160318535,
+									"parameters": {
+										"object": "gun",
+										"layer": "0",
+										"image-point": "1",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								}
+							],
+							"sid": 699246242281977,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 359812026468172,
+											"parameters": {
+												"first-value": "ShootyLilGuy.X",
+												"comparison": 2,
+												"second-value": "DP.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-angle",
+											"objectClass": "gun",
+											"sid": 402573639426283,
+											"parameters": {
+												"angle": "0"
+											}
+										},
+										{
+											"id": "set-mirrored",
+											"objectClass": "ShootyLilGuy",
+											"sid": 593479542700394,
+											"parameters": {
+												"state": "mirrored"
+											}
+										},
+										{
+											"id": "set-flipped",
+											"objectClass": "gun",
+											"sid": 417618275708062,
+											"parameters": {
+												"state": "not-flipped"
+											}
+										}
+									],
+									"sid": 736429844337025
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 600341803924433,
+											"parameters": {
+												"first-value": "ShootyLilGuy.X",
+												"comparison": 4,
+												"second-value": "DP.X"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-angle",
+											"objectClass": "gun",
+											"sid": 497266593359058,
+											"parameters": {
+												"angle": "180"
+											}
+										},
+										{
+											"id": "set-mirrored",
+											"objectClass": "ShootyLilGuy",
+											"sid": 573678112401771,
+											"parameters": {
+												"state": "not-mirrored"
+											}
+										},
+										{
+											"id": "set-flipped",
+											"objectClass": "gun",
+											"sid": 342416297121108,
+											"parameters": {
+												"state": "flipped"
+											}
+										}
+									],
+									"sid": 128901245411236
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "gun",
+									"sid": 157083509399385,
+									"parameters": {
+										"object": "Suelo"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "gun",
+									"sid": 789492191198292
+								}
+							],
+							"sid": 504408911114785
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "gun",
+									"sid": 491656079465713,
+									"parameters": {
+										"object": "DP"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "gun",
+									"sid": 805969999103453
+								}
+							],
+							"sid": 858953482453265
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "ShootyLilGuy",
+									"sid": 685036979024072,
+									"parameters": {
+										"object": "DP"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 386483577112426,
+									"parameters": {
+										"variable": "DPHP",
+										"value": "DPHP-1"
+									}
+								}
+							],
+							"sid": 666610739504355
+						}
+					],
+					"sid": 975599302807480
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Flyguy",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-start-of-layout",
+									"objectClass": "System",
+									"sid": 605147535888331
+								}
+							],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "flyguy",
+									"sid": 923847862903671,
+									"parameters": {
+										"object": "flyspawn",
+										"layer": "0",
+										"image-point": "0",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								}
+							],
+							"sid": 116605767850116
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 199652014022560,
+									"parameters": {
+										"interval-seconds": "0.1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "rotate-toward-position",
+									"objectClass": "flyguy",
+									"sid": 587011947961294,
+									"parameters": {
+										"degrees": "1",
+										"x": "DP.X",
+										"y": "DP.Y"
+									}
+								}
+							],
+							"sid": 670915443861768,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "has-los-to-object",
+											"objectClass": "flyguy",
+											"sid": 856058962055382,
+											"behaviorType": "LineOfSight",
+											"parameters": {
+												"object": "DP",
+												"image-point": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-range",
+											"objectClass": "flyguy",
+											"sid": 718608528114584,
+											"behaviorType": "LineOfSight",
+											"parameters": {
+												"range": "0"
+											}
+										},
+										{
+											"id": "set-enabled",
+											"objectClass": "flyguy",
+											"sid": 876694105662814,
+											"behaviorType": "Bullet",
+											"parameters": {
+												"state": "enabled"
+											}
+										},
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 401272029877738,
+											"parameters": {
+												"seconds": "2",
+												"use-timescale": true
+											}
+										},
+										{
+											"id": "set-enabled",
+											"objectClass": "flyguy",
+											"sid": 281947581129286,
+											"behaviorType": "Bullet",
+											"parameters": {
+												"state": "disabled"
+											}
+										},
+										{
+											"id": "set-position-to-another-object",
+											"objectClass": "flyguy",
+											"sid": 814250503424944,
+											"parameters": {
+												"object": "flyspawn",
+												"image-point-optional": "0"
+											}
+										},
+										{
+											"id": "set-range",
+											"objectClass": "flyguy",
+											"sid": 820504415070669,
+											"behaviorType": "LineOfSight",
+											"parameters": {
+												"range": "10000"
+											}
+										}
+									],
+									"sid": 354335480899696
+								}
+							]
+						}
+					],
+					"sid": 703965348983539
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Spikeguy",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 259559104721968,
+									"parameters": {
+										"interval-seconds": "0.5"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "move-forward",
+									"objectClass": "spikeguy",
+									"sid": 864426495082121,
+									"parameters": {
+										"distance": "150"
+									}
+								}
+							],
+							"sid": 635494054530853
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "spikeguy",
+									"sid": 148625655238843,
+									"parameters": {
+										"object": "BonkboxR"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "rotate-clockwise",
+									"objectClass": "spikeguy",
+									"sid": 595466656812033,
+									"parameters": {
+										"degrees": "180"
+									}
+								},
+								{
+									"id": "set-flipped",
+									"objectClass": "spikeguy",
+									"sid": 809823594937388,
+									"parameters": {
+										"state": "flipped"
+									}
+								}
+							],
+							"sid": 718285876917322
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "spikeguy",
+									"sid": 814524457952636,
+									"parameters": {
+										"object": "BonkboxL"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "rotate-clockwise",
+									"objectClass": "spikeguy",
+									"sid": 669016695294467,
+									"parameters": {
+										"degrees": "180"
+									}
+								},
+								{
+									"id": "set-flipped",
+									"objectClass": "spikeguy",
+									"sid": 904336974789246,
+									"parameters": {
+										"state": "not-flipped"
+									}
+								}
+							],
+							"sid": 623475154666193
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "spikeguy",
+									"sid": 771129642357051,
+									"parameters": {
+										"object": "DP"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 226943461034004,
+									"parameters": {
+										"variable": "DPHP",
+										"value": "DPHP-1"
+									}
+								}
+							],
+							"sid": 792869160686188
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "spikeguy",
+									"sid": 167731084650426,
+									"parameters": {
+										"object": "Swing"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 204326685579346,
+									"parameters": {
+										"variable": "DPHP",
+										"value": "DPHP-1"
+									}
+								},
+								{
+									"id": "destroy",
+									"objectClass": "Swing",
+									"sid": 444048693005981
+								}
+							],
+							"sid": 386062605071462
+						}
+					],
+					"sid": 659928191877833
+				}
+			],
+			"sid": 246233224508361
+		}
+	],
+	"sid": 740962681258430
+}
