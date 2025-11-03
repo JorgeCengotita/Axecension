@@ -1,0 +1,10 @@
+{
+	"name": "TextExit",
+	"plugin-id": "Text",
+	"sid": 794900298728811,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

@@ -1,0 +1,11 @@
+{
+	"name": "Suelo",
+	"plugin-id": "Sprite",
+	"sid": 329777311497087,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"Test_floor"
+	]
+}

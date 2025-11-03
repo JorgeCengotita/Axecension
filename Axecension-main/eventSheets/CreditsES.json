@@ -1,0 +1,32 @@
+{
+	"name": "CreditsES",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-object-clicked",
+					"objectClass": "Mouse",
+					"sid": 930910555235816,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked",
+						"object-clicked": "btnGoBack"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 652585351842692,
+					"parameters": {
+						"layout": "MainMenu"
+					}
+				}
+			],
+			"sid": 752276394067117
+		}
+	],
+	"sid": 384597138562590
+}

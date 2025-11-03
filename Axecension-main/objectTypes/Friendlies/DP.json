@@ -1,0 +1,90 @@
+{
+	"name": "DP",
+	"plugin-id": "Sprite",
+	"sid": 948898426755697,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Platform",
+			"name": "Platform",
+			"sid": 949990189463587
+		},
+		{
+			"behaviorId": "scrollto",
+			"name": "ScrollTo",
+			"sid": 180617306591827
+		},
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 428114342308971
+		},
+		{
+			"behaviorId": "bound",
+			"name": "BoundToLayout",
+			"sid": 368833207472950
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 165,
+						"height": 234,
+						"originX": 0.5212121212121212,
+						"originY": 0.5384615384615384,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 9327773,
+						"collisionPoly": {
+							"points": [
+								0,
+								0.004273504273504274,
+								1,
+								0.004273504273504274,
+								1,
+								1,
+								0,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Image Point 1",
+								"x": 1.5212121212121212,
+								"y": 0.49572649572649574
+							},
+							{
+								"name": "Image Point 2",
+								"x": 0.5151515151515151,
+								"y": -0.5256410256410257
+							},
+							{
+								"name": "Image Point 3",
+								"x": 0.503030303030303,
+								"y": 1.564102564102564
+							}
+						],
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 627414537394003,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}
