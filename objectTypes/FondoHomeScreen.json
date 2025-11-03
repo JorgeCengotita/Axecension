@@ -1,7 +1,7 @@
 {
-	"name": "Sprite2",
+	"name": "FondoHomeScreen",
 	"plugin-id": "Sprite",
-	"sid": 126618739937405,
+	"sid": 595146872222346,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
@@ -12,29 +12,25 @@
 			{
 				"frames": [
 					{
-						"width": 190,
-						"height": 49,
+						"width": 1602,
+						"height": 1230,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 8345338,
+						"imageSpriteId": 3104855,
 						"collisionPoly": {
 							"points": [
-								0.015789473684210527,
-								0,
-								1,
-								0.04081632653061224,
-								1,
-								0.9387755102040817,
-								0.9894736842105263,
-								1,
-								0.010526315789473684,
-								1,
-								0,
-								0.9591836734693877
+								0.0006242197253433209,
+								0.0008130081300813008,
+								0.9993757802746567,
+								0.0008130081300813008,
+								0.9993757802746567,
+								0.9991869918699187,
+								0.0006242197253433209,
+								0.9991869918699187
 							]
 						},
 						"useCollisionPoly": true,
@@ -42,7 +38,7 @@
 						"tag": ""
 					}
 				],
-				"sid": 428480185819266,
+				"sid": 997820967711097,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

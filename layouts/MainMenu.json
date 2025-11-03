@@ -7,7 +7,7 @@
 			"subLayers": [],
 			"instances": [
 				{
-					"type": "Sprite",
+					"type": "FondoHomeScreen",
 					"properties": {
 						"initially-visible": true,
 						"initial-animation": "Animation 1",
@@ -44,7 +44,7 @@
 					}
 				},
 				{
-					"type": "GameTitle",
+					"type": "TextGameTitle",
 					"properties": {
 						"text": "AXECENSION",
 						"enable-bbcode": true,

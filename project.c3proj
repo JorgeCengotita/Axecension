@@ -52,8 +52,8 @@
 	"uniqueId": "mt4f95n3mb4",
 	"objectTypes": {
 		"items": [
-			"GameTitle",
-			"Sprite",
+			"TextGameTitle",
+			"FondoHomeScreen",
 			"btnPlay",
 			"TextPlay",
 			"TextCredits",
@@ -63,9 +63,10 @@
 			"Keyboard",
 			"Browser",
 			"TextExit",
-			"Sprite2",
+			"btnGoBack",
 			"CreditsLayer",
-			"Text"
+			"TextCredits2",
+			"TextGoBack"
 		],
 		"subfolders": []
 	},
@@ -86,7 +87,8 @@
 	},
 	"eventSheets": {
 		"items": [
-			"MainMenuES"
+			"MainMenuES",
+			"CreditsES"
 		],
 		"subfolders": []
 	},
