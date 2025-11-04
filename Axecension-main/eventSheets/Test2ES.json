@@ -114,6 +114,185 @@
 				}
 			],
 			"sid": 195634485977015
+		},
+		{
+			"eventType": "comment",
+			"text": "Columna móvil"
+		},
+		{
+			"functionName": "IniciarSubida",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "tween-one-property",
+					"objectClass": "columnaMovil",
+					"sid": 899961135918367,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"subir\"",
+						"property": "offsetY",
+						"end-value": "columnaMovil.Y_onTop",
+						"time": "1.5",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "set-position",
+					"objectClass": "pinchosColumna",
+					"sid": 665565062367668,
+					"parameters": {
+						"x": "columnaMovil.X",
+						"y": "columnaMovil.Y"
+					}
+				}
+			],
+			"sid": 503266805372562
+		},
+		{
+			"functionName": "IniciarBajada",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-position-to-another-object",
+					"objectClass": "pinchosColumna",
+					"sid": 127355406205124,
+					"parameters": {
+						"object": "columnaMovil",
+						"image-point-optional": "0"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "columnaMovil",
+					"sid": 739141618201734,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"bajar\"",
+						"property": "offsetY",
+						"end-value": "columnaMovil.Y_onBottom",
+						"time": "1.5",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 548489137255931
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 494801458041132
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "columnaMovil",
+					"sid": 148511307354947,
+					"parameters": {
+						"instance-variable": "Y_onBottom",
+						"value": "columnaMovil.Y"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "columnaMovil",
+					"sid": 706230677169811,
+					"parameters": {
+						"instance-variable": "Y_onTop",
+						"value": "columnaMovil.Y - 150"
+					}
+				},
+				{
+					"callFunction": "IniciarSubida",
+					"sid": 647100974568708
+				}
+			],
+			"sid": 448746647413302
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tweens-finished",
+					"objectClass": "columnaMovil",
+					"sid": 856430918797009,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"subir\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 343717639304672,
+					"parameters": {
+						"seconds": "1.5",
+						"use-timescale": true
+					}
+				},
+				{
+					"callFunction": "IniciarBajada",
+					"sid": 227605135170449
+				}
+			],
+			"sid": 832475769686935
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tweens-finished",
+					"objectClass": "columnaMovil",
+					"sid": 404846640175363,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"bajar\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 282216129440349,
+					"parameters": {
+						"seconds": "1.5",
+						"use-timescale": true
+					}
+				},
+				{
+					"callFunction": "IniciarSubida",
+					"sid": 797770448509821
+				}
+			],
+			"sid": 271625540420409
 		}
 	],
 	"sid": 475392875276273

@@ -92,6 +92,13 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Tween",
+			"name": "Tween",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "bound",
 			"name": "Bound to layout",
 			"author": "Scirra",
@@ -145,7 +152,16 @@
 					"flyspawn",
 					"DestroyableFloor"
 				],
-				"subfolders": [],
+				"subfolders": [
+					{
+						"items": [
+							"columnaMovil",
+							"pinchosColumna"
+						],
+						"subfolders": [],
+						"name": "columnaMovil"
+					}
+				],
 				"name": "Design"
 			},
 			{
