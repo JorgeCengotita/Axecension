@@ -1,0 +1,120 @@
+{
+	"name": "Test2ES",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Plataformas destructibles. Para cambiar el tiempo que tardan en destruirse es tan sencillo como cambiar la parte que dice Start Timer \"destruir\" for 2.0      El 2.0 son los segundos que tarda en destruirse"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "DP",
+					"sid": 535898537963034,
+					"parameters": {
+						"object": "DestroyableFloor"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-instvar",
+					"objectClass": "DestroyableFloor",
+					"sid": 711548933962383,
+					"parameters": {
+						"instance-variable": "haSidoPisada",
+						"value": "true"
+					}
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "DestroyableFloor",
+					"sid": 828568048915082,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "2.0",
+						"type": "once",
+						"tag": "\"destruir\""
+					}
+				},
+				{
+					"id": "set-active",
+					"objectClass": "DestroyableFloor",
+					"sid": 570478365086766,
+					"behaviorType": "Sine",
+					"parameters": {
+						"state": "active"
+					}
+				}
+			],
+			"sid": 996646651674035,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-on-floor",
+							"objectClass": "DP",
+							"sid": 827248599873187,
+							"behaviorType": "Platform"
+						}
+					],
+					"actions": [],
+					"sid": 131004756448610
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "DestroyableFloor",
+							"sid": 631982413185876,
+							"parameters": {
+								"instance-variable": "haSidoPisada"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [],
+					"sid": 825515435861716
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 705627255434277
+						}
+					],
+					"actions": [],
+					"sid": 996453501307751
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-timer",
+					"objectClass": "DestroyableFloor",
+					"sid": 218909315511170,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "\"destruir\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "DestroyableFloor",
+					"sid": 982182547390955
+				}
+			],
+			"sid": 195634485977015
+		}
+	],
+	"sid": 475392875276273
+}

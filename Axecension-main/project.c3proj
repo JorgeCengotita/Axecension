@@ -78,6 +78,20 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Sin",
+			"name": "Sine",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Timer",
+			"name": "Timer",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "bound",
 			"name": "Bound to layout",
 			"author": "Scirra",
@@ -101,21 +115,9 @@
 	"uniqueId": "mt4f95n3mb4",
 	"objectTypes": {
 		"items": [
-			"TextGameTitle",
-			"FondoHomeScreen",
-			"btnPlay",
-			"TextPlay",
-			"TextCredits",
-			"btnCredits",
-			"btnExit",
 			"Mouse",
 			"Keyboard",
-			"Browser",
-			"TextExit",
-			"btnGoBack",
-			"CreditsLayer",
-			"TextCredits2",
-			"TextGoBack"
+			"Browser"
 		],
 		"subfolders": [
 			{
@@ -140,7 +142,8 @@
 					"BonkboxR",
 					"BonkboxL",
 					"Damage",
-					"flyspawn"
+					"flyspawn",
+					"DestroyableFloor"
 				],
 				"subfolders": [],
 				"name": "Design"
@@ -154,6 +157,24 @@
 				],
 				"subfolders": [],
 				"name": "Friendlies"
+			},
+			{
+				"items": [
+					"btnCredits",
+					"btnExit",
+					"btnGoBack",
+					"btnPlay",
+					"CreditsLayer",
+					"FondoHomeScreen",
+					"TextCredits",
+					"TextCredits2",
+					"TextExit",
+					"TextGameTitle",
+					"TextGoBack",
+					"TextPlay"
+				],
+				"subfolders": [],
+				"name": "Main Menu"
 			}
 		]
 	},
@@ -173,7 +194,8 @@
 			"CreditsLayout",
 			"GameLayout",
 			"Test",
-			"Prefab"
+			"Prefab",
+			"Test2"
 		],
 		"subfolders": []
 	},
@@ -181,7 +203,8 @@
 		"items": [
 			"MainMenuES",
 			"CreditsES",
-			"Omnicode"
+			"Omnicode",
+			"Test2ES"
 		],
 		"subfolders": []
 	},
