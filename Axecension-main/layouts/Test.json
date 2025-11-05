@@ -85,7 +85,7 @@
 						},
 						"Bullet": {
 							"properties": {
-								"speed": 1000,
+								"speed": 2000,
 								"acceleration": 0,
 								"gravity": 0,
 								"bounce-off-solids": false,
@@ -98,6 +98,9 @@
 							"properties": {
 								"bound-by": "edge"
 							}
+						},
+						"Timer": {
+							"properties": {}
 						}
 					},
 					"instanceFolderItem": {
@@ -436,6 +439,9 @@
 								"step": false,
 								"enabled": false
 							}
+						},
+						"Temporizador": {
+							"properties": {}
 						}
 					},
 					"instanceFolderItem": {
@@ -484,6 +490,43 @@
 					"world": {
 						"x": 3262,
 						"y": 765,
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "heal",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 43,
+					"sid": 510493118671609,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"instanceFolderItem": {
+						"sid": 510493118671609,
+						"expanded": true
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 139,
+						"y": 1864,
 						"width": 250,
 						"height": 250,
 						"originX": 0.5,

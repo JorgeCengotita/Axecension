@@ -1,27 +1,11 @@
 {
-	"name": "flyguy",
+	"name": "heal",
 	"plugin-id": "Sprite",
-	"sid": 836718146745039,
+	"sid": 577944952969841,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
-	"behaviorTypes": [
-		{
-			"behaviorId": "LOS",
-			"name": "LineOfSight",
-			"sid": 811424866745172
-		},
-		{
-			"behaviorId": "Bullet",
-			"name": "Bullet",
-			"sid": 105865501461731
-		},
-		{
-			"behaviorId": "Timer",
-			"name": "Temporizador",
-			"sid": 465701260983061
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
 		"items": [
@@ -36,13 +20,13 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 8406105,
+						"imageSpriteId": 3305194,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 226356871908496,
+				"sid": 172837429410900,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

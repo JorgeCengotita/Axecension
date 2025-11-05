@@ -25,6 +25,11 @@
 			"behaviorId": "bound",
 			"name": "BoundToLayout",
 			"sid": 368833207472950
+		},
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 859683401461465
 		}
 	],
 	"effectTypes": [],

@@ -2,6 +2,10 @@
 	"name": "Omnicode",
 	"events": [
 		{
+			"eventType": "include",
+			"includeSheet": "Test2ES"
+		},
+		{
 			"eventType": "variable",
 			"name": "DPHP",
 			"type": "number",
@@ -9,7 +13,17 @@
 			"comment": "The players HP",
 			"isStatic": false,
 			"isConstant": false,
-			"sid": 724552122786673
+			"sid": 522708351193272
+		},
+		{
+			"eventType": "variable",
+			"name": "IsDash",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 923018724700376
 		},
 		{
 			"eventType": "group",
@@ -18,6 +32,51 @@
 			"description": "",
 			"isActiveOnStart": true,
 			"children": [
+				{
+					"functionName": "Daño",
+					"functionDescription": "recibir daño",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [
+						{
+							"id": "is-timer-running",
+							"objectClass": "DP",
+							"sid": 897736946139670,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"frames\""
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 566927033529663,
+							"parameters": {
+								"variable": "DPHP",
+								"value": "DPHP-1"
+							}
+						},
+						{
+							"id": "start-timer",
+							"objectClass": "DP",
+							"sid": 875512465475986,
+							"behaviorType": "Timer",
+							"parameters": {
+								"duration": "3",
+								"type": "once",
+								"tag": "\"frames\""
+							}
+						}
+					],
+					"sid": 512136009895569
+				},
 				{
 					"eventType": "variable",
 					"name": "CanDash",
@@ -56,16 +115,6 @@
 					"isActiveOnStart": true,
 					"children": [
 						{
-							"eventType": "variable",
-							"name": "Attacktimer",
-							"type": "number",
-							"initialValue": "0.2",
-							"comment": "Delay between attacks",
-							"isStatic": false,
-							"isConstant": false,
-							"sid": 310334773648694
-						},
-						{
 							"eventType": "block",
 							"conditions": [
 								{
@@ -84,6 +133,15 @@
 									"sid": 423051784146009,
 									"parameters": {
 										"state": "not-mirrored"
+									}
+								},
+								{
+									"id": "set-angle-of-motion",
+									"objectClass": "DP",
+									"sid": 757199428273785,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"angle": "0"
 									}
 								}
 							],
@@ -109,6 +167,15 @@
 									"parameters": {
 										"state": "mirrored"
 									}
+								},
+								{
+									"id": "set-angle-of-motion",
+									"objectClass": "DP",
+									"sid": 494828295952723,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"angle": "180"
+									}
 								}
 							],
 							"sid": 870236208920001
@@ -133,14 +200,14 @@
 									}
 								},
 								{
-									"id": "compare-two-values",
-									"objectClass": "System",
-									"sid": 954548018315030,
+									"id": "is-timer-running",
+									"objectClass": "DP",
+									"sid": 876978547415428,
+									"behaviorType": "Timer",
 									"parameters": {
-										"first-value": "Attacktimer",
-										"comparison": 5,
-										"second-value": "0.2"
-									}
+										"tag": "\"atk\""
+									},
+									"isInverted": true
 								}
 							],
 							"actions": [
@@ -157,43 +224,25 @@
 									}
 								},
 								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 200478284168539,
+									"id": "start-timer",
+									"objectClass": "DP",
+									"sid": 441096180993402,
+									"behaviorType": "Timer",
 									"parameters": {
-										"variable": "Attacktimer",
-										"value": "0"
+										"duration": "0.3",
+										"type": "once",
+										"tag": "\"duration\""
 									}
 								},
 								{
-									"id": "wait",
-									"objectClass": "System",
-									"sid": 647358552498106,
+									"id": "start-timer",
+									"objectClass": "DP",
+									"sid": 513984098094596,
+									"behaviorType": "Timer",
 									"parameters": {
-										"seconds": "0.2",
-										"use-timescale": true
-									}
-								},
-								{
-									"id": "destroy",
-									"objectClass": "Swing",
-									"sid": 780513720550243
-								},
-								{
-									"id": "wait",
-									"objectClass": "System",
-									"sid": 993492643343932,
-									"parameters": {
-										"seconds": "0.2",
-										"use-timescale": true
-									}
-								},
-								{
-									"id": "reset-eventvar",
-									"objectClass": "System",
-									"sid": 670168195834464,
-									"parameters": {
-										"variable": "Attacktimer"
+										"duration": "0.5",
+										"type": "once",
+										"tag": "\"atk\""
 									}
 								}
 							],
@@ -219,14 +268,14 @@
 									}
 								},
 								{
-									"id": "compare-two-values",
-									"objectClass": "System",
-									"sid": 914549335498183,
+									"id": "is-timer-running",
+									"objectClass": "DP",
+									"sid": 978638629974395,
+									"behaviorType": "Timer",
 									"parameters": {
-										"first-value": "Attacktimer",
-										"comparison": 0,
-										"second-value": "0.2"
-									}
+										"tag": "\"atk\""
+									},
+									"isInverted": true
 								}
 							],
 							"actions": [
@@ -243,43 +292,25 @@
 									}
 								},
 								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 351711220518648,
+									"id": "start-timer",
+									"objectClass": "DP",
+									"sid": 515310914956776,
+									"behaviorType": "Timer",
 									"parameters": {
-										"variable": "Attacktimer",
-										"value": "0"
+										"duration": "0.3",
+										"type": "once",
+										"tag": "\"duration\""
 									}
 								},
 								{
-									"id": "wait",
-									"objectClass": "System",
-									"sid": 680364693420081,
+									"id": "start-timer",
+									"objectClass": "DP",
+									"sid": 657749969328505,
+									"behaviorType": "Timer",
 									"parameters": {
-										"seconds": "0.2",
-										"use-timescale": true
-									}
-								},
-								{
-									"id": "destroy",
-									"objectClass": "Swing",
-									"sid": 567489035289167
-								},
-								{
-									"id": "wait",
-									"objectClass": "System",
-									"sid": 562088806750053,
-									"parameters": {
-										"seconds": "0.2",
-										"use-timescale": true
-									}
-								},
-								{
-									"id": "reset-eventvar",
-									"objectClass": "System",
-									"sid": 258699581688044,
-									"parameters": {
-										"variable": "Attacktimer"
+										"duration": "0.5",
+										"type": "once",
+										"tag": "\"atk\""
 									}
 								}
 							],
@@ -297,14 +328,14 @@
 									}
 								},
 								{
-									"id": "compare-two-values",
-									"objectClass": "System",
-									"sid": 184710525280188,
+									"id": "is-timer-running",
+									"objectClass": "DP",
+									"sid": 727853442611285,
+									"behaviorType": "Timer",
 									"parameters": {
-										"first-value": "Attacktimer",
-										"comparison": 5,
-										"second-value": "0.2"
-									}
+										"tag": "\"atk\""
+									},
+									"isInverted": true
 								}
 							],
 							"actions": [
@@ -321,43 +352,25 @@
 									}
 								},
 								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 288703059076111,
+									"id": "start-timer",
+									"objectClass": "DP",
+									"sid": 931879071216435,
+									"behaviorType": "Timer",
 									"parameters": {
-										"variable": "Attacktimer",
-										"value": "0"
+										"duration": "0.3",
+										"type": "once",
+										"tag": "\"duration\""
 									}
 								},
 								{
-									"id": "wait",
-									"objectClass": "System",
-									"sid": 615348885858488,
+									"id": "start-timer",
+									"objectClass": "DP",
+									"sid": 843070541990430,
+									"behaviorType": "Timer",
 									"parameters": {
-										"seconds": "0.2",
-										"use-timescale": true
-									}
-								},
-								{
-									"id": "destroy",
-									"objectClass": "Swing",
-									"sid": 138690744150921
-								},
-								{
-									"id": "wait",
-									"objectClass": "System",
-									"sid": 853103228533558,
-									"parameters": {
-										"seconds": "0.2",
-										"use-timescale": true
-									}
-								},
-								{
-									"id": "reset-eventvar",
-									"objectClass": "System",
-									"sid": 604723918628688,
-									"parameters": {
-										"variable": "Attacktimer"
+										"duration": "0.5",
+										"type": "once",
+										"tag": "\"atk\""
 									}
 								}
 							],
@@ -369,7 +382,7 @@
 								{
 									"id": "on-key-pressed",
 									"objectClass": "Keyboard",
-									"sid": 300873442443668,
+									"sid": 283324046568979,
 									"parameters": {
 										"key": 81
 									}
@@ -387,6 +400,16 @@
 									"objectClass": "DP",
 									"sid": 554532477620035,
 									"isInverted": true
+								},
+								{
+									"id": "is-timer-running",
+									"objectClass": "DP",
+									"sid": 505681755548739,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "\"rngatk\""
+									},
+									"isInverted": true
 								}
 							],
 							"actions": [
@@ -403,18 +426,26 @@
 									}
 								},
 								{
-									"id": "wait",
-									"objectClass": "System",
-									"sid": 322229782017744,
+									"id": "start-timer",
+									"objectClass": "DP",
+									"sid": 687051358412533,
+									"behaviorType": "Timer",
 									"parameters": {
-										"seconds": "1.0",
-										"use-timescale": true
+										"duration": "4",
+										"type": "once",
+										"tag": "\"rngatk\""
 									}
 								},
 								{
-									"id": "destroy",
-									"objectClass": "DPgunR",
-									"sid": 811761495021864
+									"id": "start-timer",
+									"objectClass": "DP",
+									"sid": 528064948633577,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "1.0",
+										"type": "once",
+										"tag": "\"rngdur\""
+									}
 								}
 							],
 							"sid": 975704616595349
@@ -442,6 +473,16 @@
 									"id": "is-mirrored",
 									"objectClass": "DP",
 									"sid": 902449224209077
+								},
+								{
+									"id": "is-timer-running",
+									"objectClass": "DP",
+									"sid": 154501262699019,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "\"rngatk\""
+									},
+									"isInverted": true
 								}
 							],
 							"actions": [
@@ -466,18 +507,26 @@
 									}
 								},
 								{
-									"id": "wait",
-									"objectClass": "System",
-									"sid": 509591010895362,
+									"id": "start-timer",
+									"objectClass": "DP",
+									"sid": 686937401502815,
+									"behaviorType": "Timer",
 									"parameters": {
-										"seconds": "1.0",
-										"use-timescale": true
+										"duration": "4",
+										"type": "once",
+										"tag": "\"rngatk\""
 									}
 								},
 								{
-									"id": "destroy",
-									"objectClass": "DPgunL",
-									"sid": 643182663161417
+									"id": "start-timer",
+									"objectClass": "DP",
+									"sid": 538448985919438,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "1.0",
+										"type": "once",
+										"tag": "\"rngdur\""
+									}
 								}
 							],
 							"sid": 184564796580852
@@ -496,15 +545,19 @@
 								{
 									"id": "compare-boolean-eventvar",
 									"objectClass": "System",
-									"sid": 369173943463844,
+									"sid": 749027285911014,
 									"parameters": {
 										"variable": "CanDash"
 									}
 								},
 								{
-									"id": "is-mirrored",
+									"id": "is-timer-running",
 									"objectClass": "DP",
-									"sid": 646913830262172,
+									"sid": 151720382006802,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "\"Dash\""
+									},
 									"isInverted": true
 								}
 							],
@@ -512,160 +565,124 @@
 								{
 									"id": "set-enabled",
 									"objectClass": "DP",
-									"sid": 935994495445957,
+									"sid": 248850227206001,
 									"behaviorType": "Bullet",
 									"parameters": {
 										"state": "enabled"
 									}
 								},
 								{
-									"id": "set-speed",
-									"objectClass": "DP",
-									"sid": 439892239088550,
-									"behaviorType": "Bullet",
-									"parameters": {
-										"speed": "1000"
-									}
-								},
-								{
 									"id": "set-max-fall-speed",
 									"objectClass": "DP",
-									"sid": 682891750755053,
+									"sid": 524436231426644,
 									"behaviorType": "Platform",
 									"parameters": {
-										"max-fall-speed": "0"
+										"max-fall-speed": "1"
 									}
 								},
 								{
-									"id": "wait",
-									"objectClass": "System",
-									"sid": 946078021236422,
-									"parameters": {
-										"seconds": "1.0",
-										"use-timescale": true
-									}
-								},
-								{
-									"id": "set-max-fall-speed",
+									"id": "start-timer",
 									"objectClass": "DP",
-									"sid": 852233552471540,
-									"behaviorType": "Platform",
+									"sid": 297442818113188,
+									"behaviorType": "Timer",
 									"parameters": {
-										"max-fall-speed": "1000"
+										"duration": "0.5",
+										"type": "once",
+										"tag": "\"Dash\""
 									}
 								},
 								{
-									"id": "set-speed",
-									"objectClass": "DP",
-									"sid": 343087744224462,
-									"behaviorType": "Bullet",
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 147700132335049,
 									"parameters": {
-										"speed": "0"
-									}
-								},
-								{
-									"id": "set-enabled",
-									"objectClass": "DP",
-									"sid": 924194396632203,
-									"behaviorType": "Bullet",
-									"parameters": {
-										"state": "disabled"
+										"type": "log",
+										"message": "DP.Bullet.AngleOfMotion"
 									}
 								}
 							],
-							"sid": 466812144111636
+							"sid": 466812144111636,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-mirrored",
+											"objectClass": "DP",
+											"sid": 312565703669595
+										}
+									],
+									"actions": [
+										{
+											"id": "set-angle-of-motion",
+											"objectClass": "DP",
+											"sid": 447008703286989,
+											"behaviorType": "Bullet",
+											"parameters": {
+												"angle": "180"
+											}
+										}
+									],
+									"sid": 465196568703415
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 625798843553280
+										}
+									],
+									"actions": [
+										{
+											"id": "set-angle-of-motion",
+											"objectClass": "DP",
+											"sid": 727658023692506,
+											"behaviorType": "Bullet",
+											"parameters": {
+												"angle": "0"
+											}
+										}
+									],
+									"sid": 794465510303269
+								}
+							]
 						},
 						{
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "on-key-released",
-									"objectClass": "Keyboard",
-									"sid": 145082835343240,
-									"parameters": {
-										"key": 69
-									}
-								},
-								{
-									"id": "compare-boolean-eventvar",
-									"objectClass": "System",
-									"sid": 614689166620272,
-									"parameters": {
-										"variable": "CanDash"
-									}
-								},
-								{
-									"id": "is-mirrored",
+									"id": "on-timer",
 									"objectClass": "DP",
-									"sid": 909494453926040
+									"sid": 805799124698451,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "\"Dash\""
+									}
 								}
 							],
 							"actions": [
 								{
-									"id": "set-enabled",
-									"objectClass": "DP",
-									"sid": 539004965042252,
-									"behaviorType": "Bullet",
-									"parameters": {
-										"state": "enabled"
-									}
-								},
-								{
-									"id": "set-speed",
-									"objectClass": "DP",
-									"sid": 574173823968591,
-									"behaviorType": "Bullet",
-									"parameters": {
-										"speed": "-1000"
-									}
-								},
-								{
 									"id": "set-max-fall-speed",
 									"objectClass": "DP",
-									"sid": 739847900455823,
-									"behaviorType": "Platform",
-									"parameters": {
-										"max-fall-speed": "0"
-									}
-								},
-								{
-									"id": "wait",
-									"objectClass": "System",
-									"sid": 778546103649003,
-									"parameters": {
-										"seconds": "1.0",
-										"use-timescale": true
-									}
-								},
-								{
-									"id": "set-max-fall-speed",
-									"objectClass": "DP",
-									"sid": 334286495160483,
+									"sid": 226050279537624,
 									"behaviorType": "Platform",
 									"parameters": {
 										"max-fall-speed": "1000"
 									}
 								},
 								{
-									"id": "set-speed",
-									"objectClass": "DP",
-									"sid": 727217685510260,
-									"behaviorType": "Bullet",
-									"parameters": {
-										"speed": "0"
-									}
-								},
-								{
 									"id": "set-enabled",
 									"objectClass": "DP",
-									"sid": 732242347219893,
+									"sid": 131012205805045,
 									"behaviorType": "Bullet",
 									"parameters": {
 										"state": "disabled"
 									}
 								}
 							],
-							"sid": 536349779041727
+							"sid": 813751522689385
 						}
 					],
 					"sid": 649799119680848
@@ -742,6 +759,137 @@
 						}
 					],
 					"sid": 957004036983069
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 766976392615322,
+							"parameters": {
+								"first-value": "DPHP",
+								"comparison": 3,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "restart-layout",
+							"objectClass": "System",
+							"sid": 168458733164013
+						}
+					],
+					"sid": 509660608564961
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "DP",
+							"sid": 841184451055419,
+							"parameters": {
+								"object": "heal"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 225203981261017,
+							"parameters": {
+								"variable": "DPHP",
+								"value": "1"
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "heal",
+							"sid": 969480438316513
+						}
+					],
+					"sid": 780927059022832,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 517038551475715,
+									"parameters": {
+										"first-value": "DPHP",
+										"comparison": 4,
+										"second-value": "5"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 919667631031110,
+									"parameters": {
+										"variable": "DPHP",
+										"value": "5"
+									}
+								}
+							],
+							"sid": 488735992844247
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-timer",
+							"objectClass": "DP",
+							"sid": 524993970327141,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"duration\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "Swing",
+							"sid": 674806201453060
+						}
+					],
+					"sid": 932850211179303
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-timer",
+							"objectClass": "DP",
+							"sid": 647850237328832,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"rngdur\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "DPgunR",
+							"sid": 811761495021864
+						},
+						{
+							"id": "destroy",
+							"objectClass": "DPgunL",
+							"sid": 643182663161417
+						}
+					],
+					"sid": 715413729983622
 				}
 			],
 			"sid": 783924907955553
@@ -766,9 +914,9 @@
 								{
 									"id": "every-x-seconds",
 									"objectClass": "System",
-									"sid": 925864726056178,
+									"sid": 254135534846969,
 									"parameters": {
-										"interval-seconds": "0.5"
+										"interval-seconds": "0.01"
 									}
 								}
 							],
@@ -776,9 +924,9 @@
 								{
 									"id": "move-forward",
 									"objectClass": "Side_enemy",
-									"sid": 173931072324486,
+									"sid": 238268048822540,
 									"parameters": {
-										"distance": "150"
+										"distance": "3"
 									}
 								}
 							],
@@ -862,13 +1010,8 @@
 							],
 							"actions": [
 								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 355087960128586,
-									"parameters": {
-										"variable": "DPHP",
-										"value": "DPHP-1"
-									}
+									"callFunction": "Daño",
+									"sid": 290201066897199
 								}
 							],
 							"sid": 206994061573267
@@ -889,9 +1032,9 @@
 								{
 									"id": "every-x-seconds",
 									"objectClass": "System",
-									"sid": 495785987402231,
+									"sid": 313643430775875,
 									"parameters": {
-										"interval-seconds": "1"
+										"interval-seconds": "3"
 									}
 								}
 							],
@@ -1032,6 +1175,10 @@
 							],
 							"actions": [
 								{
+									"callFunction": "Daño",
+									"sid": 690591592913566
+								},
+								{
 									"id": "destroy",
 									"objectClass": "gun",
 									"sid": 805969999103453
@@ -1053,13 +1200,8 @@
 							],
 							"actions": [
 								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 386483577112426,
-									"parameters": {
-										"variable": "DPHP",
-										"value": "DPHP-1"
-									}
+									"callFunction": "Daño",
+									"sid": 575256059772380
 								}
 							],
 							"sid": 666610739504355
@@ -1105,24 +1247,13 @@
 								{
 									"id": "every-x-seconds",
 									"objectClass": "System",
-									"sid": 199652014022560,
+									"sid": 850496015378131,
 									"parameters": {
-										"interval-seconds": "0.1"
+										"interval-seconds": "3"
 									}
 								}
 							],
-							"actions": [
-								{
-									"id": "rotate-toward-position",
-									"objectClass": "flyguy",
-									"sid": 587011947961294,
-									"parameters": {
-										"degrees": "1",
-										"x": "DP.X",
-										"y": "DP.Y"
-									}
-								}
-							],
+							"actions": [],
 							"sid": 670915443861768,
 							"children": [
 								{
@@ -1159,45 +1290,93 @@
 											}
 										},
 										{
-											"id": "wait",
-											"objectClass": "System",
-											"sid": 401272029877738,
+											"id": "start-timer",
+											"objectClass": "flyguy",
+											"sid": 192317827521057,
+											"behaviorType": "Temporizador",
 											"parameters": {
-												"seconds": "2",
-												"use-timescale": true
+												"duration": "0.5",
+												"type": "once",
+												"tag": "\"wing\""
 											}
 										},
 										{
-											"id": "set-enabled",
+											"id": "set-angle-of-motion",
 											"objectClass": "flyguy",
-											"sid": 281947581129286,
+											"sid": 311146184394718,
 											"behaviorType": "Bullet",
 											"parameters": {
-												"state": "disabled"
-											}
-										},
-										{
-											"id": "set-position-to-another-object",
-											"objectClass": "flyguy",
-											"sid": 814250503424944,
-											"parameters": {
-												"object": "flyspawn",
-												"image-point-optional": "0"
-											}
-										},
-										{
-											"id": "set-range",
-											"objectClass": "flyguy",
-											"sid": 820504415070669,
-											"behaviorType": "LineOfSight",
-											"parameters": {
-												"range": "10000"
+												"angle": "angle(flyguy.X,flyguy.Y,DP.X,DP.Y)"
 											}
 										}
 									],
 									"sid": 354335480899696
 								}
 							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-timer",
+									"objectClass": "flyguy",
+									"sid": 435285801310631,
+									"behaviorType": "Temporizador",
+									"parameters": {
+										"tag": "\"wing\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "flyguy",
+									"sid": 866282039690591,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"state": "disabled"
+									}
+								},
+								{
+									"id": "set-position-to-another-object",
+									"objectClass": "flyguy",
+									"sid": 313440384495919,
+									"parameters": {
+										"object": "flyspawn",
+										"image-point-optional": "0"
+									}
+								},
+								{
+									"id": "set-range",
+									"objectClass": "flyguy",
+									"sid": 710882805485935,
+									"behaviorType": "LineOfSight",
+									"parameters": {
+										"range": "10000"
+									}
+								}
+							],
+							"sid": 787511933572390
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "flyguy",
+									"sid": 603821679098997,
+									"parameters": {
+										"object": "DP"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "Daño",
+									"sid": 144105510416100
+								}
+							],
+							"sid": 422215036822260
 						}
 					],
 					"sid": 703965348983539
@@ -1215,9 +1394,9 @@
 								{
 									"id": "every-x-seconds",
 									"objectClass": "System",
-									"sid": 259559104721968,
+									"sid": 218670896105503,
 									"parameters": {
-										"interval-seconds": "0.5"
+										"interval-seconds": "0.01"
 									}
 								}
 							],
@@ -1225,9 +1404,9 @@
 								{
 									"id": "move-forward",
 									"objectClass": "spikeguy",
-									"sid": 864426495082121,
+									"sid": 523055366620480,
 									"parameters": {
-										"distance": "150"
+										"distance": "3"
 									}
 								}
 							],
@@ -1311,13 +1490,8 @@
 							],
 							"actions": [
 								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 226943461034004,
-									"parameters": {
-										"variable": "DPHP",
-										"value": "DPHP-1"
-									}
+									"callFunction": "Daño",
+									"sid": 909624102404742
 								}
 							],
 							"sid": 792869160686188
@@ -1336,21 +1510,53 @@
 							],
 							"actions": [
 								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 204326685579346,
-									"parameters": {
-										"variable": "DPHP",
-										"value": "DPHP-1"
-									}
-								},
-								{
-									"id": "destroy",
-									"objectClass": "Swing",
-									"sid": 444048693005981
+									"callFunction": "Daño",
+									"sid": 925284576937074
 								}
 							],
 							"sid": 386062605071462
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "spikeguy",
+									"sid": 503741430377827,
+									"parameters": {
+										"object": "DPgunL"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "spikeguy",
+									"sid": 301122132788890
+								}
+							],
+							"sid": 602221740337928
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "spikeguy",
+									"sid": 648440275853414,
+									"parameters": {
+										"object": "DPgunR"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "spikeguy",
+									"sid": 369615688248898
+								}
+							],
+							"sid": 337006540491157
 						}
 					],
 					"sid": 659928191877833
