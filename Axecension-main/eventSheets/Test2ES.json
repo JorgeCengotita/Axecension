@@ -6,293 +6,313 @@
 			"text": "Plataformas destructibles. Para cambiar el tiempo que tardan en destruirse es tan sencillo como cambiar la parte que dice Start Timer \"destruir\" for 2.0      El 2.0 son los segundos que tarda en destruirse"
 		},
 		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-collision-with-another-object",
-					"objectClass": "DP",
-					"sid": 535898537963034,
-					"parameters": {
-						"object": "DestroyableFloor"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "set-boolean-instvar",
-					"objectClass": "DestroyableFloor",
-					"sid": 711548933962383,
-					"parameters": {
-						"instance-variable": "haSidoPisada",
-						"value": "true"
-					}
-				},
-				{
-					"id": "start-timer",
-					"objectClass": "DestroyableFloor",
-					"sid": 828568048915082,
-					"behaviorType": "Timer",
-					"parameters": {
-						"duration": "2.0",
-						"type": "once",
-						"tag": "\"destruir\""
-					}
-				},
-				{
-					"id": "set-active",
-					"objectClass": "DestroyableFloor",
-					"sid": 570478365086766,
-					"behaviorType": "Sine",
-					"parameters": {
-						"state": "active"
-					}
-				}
-			],
-			"sid": 996646651674035,
+			"eventType": "group",
+			"disabled": false,
+			"title": "Plataformas destructibles",
+			"description": "",
+			"isActiveOnStart": true,
 			"children": [
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "is-on-floor",
+							"id": "on-collision-with-another-object",
 							"objectClass": "DP",
-							"sid": 827248599873187,
-							"behaviorType": "Platform"
-						}
-					],
-					"actions": [],
-					"sid": 131004756448610
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "DestroyableFloor",
-							"sid": 631982413185876,
+							"sid": 562037798249570,
 							"parameters": {
-								"instance-variable": "haSidoPisada"
-							},
-							"isInverted": true
+								"object": "DestroyableFloor"
+							}
 						}
 					],
-					"actions": [],
-					"sid": 825515435861716
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "DestroyableFloor",
+							"sid": 679601680160178,
+							"parameters": {
+								"instance-variable": "haSidoPisada",
+								"value": "true"
+							}
+						},
+						{
+							"id": "start-timer",
+							"objectClass": "DestroyableFloor",
+							"sid": 879389740166924,
+							"behaviorType": "Timer",
+							"parameters": {
+								"duration": "2.0",
+								"type": "once",
+								"tag": "\"destruir\""
+							}
+						},
+						{
+							"id": "set-active",
+							"objectClass": "DestroyableFloor",
+							"sid": 270311790894249,
+							"behaviorType": "Sine",
+							"parameters": {
+								"state": "active"
+							}
+						}
+					],
+					"sid": 984783940411301,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-floor",
+									"objectClass": "DP",
+									"sid": 132657593218751,
+									"behaviorType": "Platform"
+								}
+							],
+							"actions": [],
+							"sid": 756972330961126
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "DestroyableFloor",
+									"sid": 994580534225030,
+									"parameters": {
+										"instance-variable": "haSidoPisada"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [],
+							"sid": 346741278893514
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 600024128176723
+								}
+							],
+							"actions": [],
+							"sid": 942538172856595
+						}
+					]
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "trigger-once-while-true",
-							"objectClass": "System",
-							"sid": 705627255434277
+							"id": "on-timer",
+							"objectClass": "DestroyableFloor",
+							"sid": 705406627094273,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"destruir\""
+							}
 						}
 					],
-					"actions": [],
-					"sid": 996453501307751
-				}
-			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-timer",
-					"objectClass": "DestroyableFloor",
-					"sid": 218909315511170,
-					"behaviorType": "Timer",
-					"parameters": {
-						"tag": "\"destruir\""
-					}
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "DestroyableFloor",
+							"sid": 146517548414986
+						}
+					],
+					"sid": 378427981938809
 				}
 			],
-			"actions": [
-				{
-					"id": "destroy",
-					"objectClass": "DestroyableFloor",
-					"sid": 982182547390955
-				}
-			],
-			"sid": 195634485977015
+			"sid": 601475738905367
 		},
 		{
-			"eventType": "comment",
-			"text": "Columna móvil"
-		},
-		{
-			"functionName": "IniciarSubida",
-			"functionDescription": "",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionCopyPicked": false,
-			"functionIsAsync": false,
-			"functionParameters": [],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [
+			"eventType": "group",
+			"disabled": false,
+			"title": "Columna móvil",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
 				{
-					"id": "tween-one-property",
-					"objectClass": "columnaMovil",
-					"sid": 899961135918367,
-					"behaviorType": "Tween",
-					"parameters": {
-						"tags": "\"subir\"",
-						"property": "offsetY",
-						"end-value": "columnaMovil.Y_onTop",
-						"time": "1.5",
-						"ease": "default",
-						"destroy-on-complete": "no",
-						"loop": "no",
-						"ping-pong": "no",
-						"repeat-count": "1"
-					}
+					"eventType": "comment",
+					"text": "Columna móvil"
 				},
 				{
-					"id": "set-position",
-					"objectClass": "pinchosColumna",
-					"sid": 665565062367668,
-					"parameters": {
-						"x": "columnaMovil.X",
-						"y": "columnaMovil.Y"
-					}
-				}
-			],
-			"sid": 503266805372562
-		},
-		{
-			"functionName": "IniciarBajada",
-			"functionDescription": "",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionCopyPicked": false,
-			"functionIsAsync": false,
-			"functionParameters": [],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [
-				{
-					"id": "set-position-to-another-object",
-					"objectClass": "pinchosColumna",
-					"sid": 127355406205124,
-					"parameters": {
-						"object": "columnaMovil",
-						"image-point-optional": "0"
-					}
+					"functionName": "IniciarSubida",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "tween-one-property",
+							"objectClass": "columnaMovil",
+							"sid": 808447460669762,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"subir\"",
+								"property": "offsetY",
+								"end-value": "columnaMovil.Y_onTop",
+								"time": "1.5",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "pinchosColumna",
+							"sid": 851743454334448,
+							"parameters": {
+								"x": "columnaMovil.X",
+								"y": "columnaMovil.Y"
+							}
+						}
+					],
+					"sid": 545388067938839
 				},
 				{
-					"id": "tween-one-property",
-					"objectClass": "columnaMovil",
-					"sid": 739141618201734,
-					"behaviorType": "Tween",
-					"parameters": {
-						"tags": "\"bajar\"",
-						"property": "offsetY",
-						"end-value": "columnaMovil.Y_onBottom",
-						"time": "1.5",
-						"ease": "default",
-						"destroy-on-complete": "no",
-						"loop": "no",
-						"ping-pong": "no",
-						"repeat-count": "1"
-					}
-				}
-			],
-			"sid": 548489137255931
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-start-of-layout",
-					"objectClass": "System",
-					"sid": 494801458041132
-				}
-			],
-			"actions": [
-				{
-					"id": "set-instvar-value",
-					"objectClass": "columnaMovil",
-					"sid": 148511307354947,
-					"parameters": {
-						"instance-variable": "Y_onBottom",
-						"value": "columnaMovil.Y"
-					}
+					"functionName": "IniciarBajada",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-position-to-another-object",
+							"objectClass": "pinchosColumna",
+							"sid": 870652041852625,
+							"parameters": {
+								"object": "columnaMovil",
+								"image-point-optional": "0"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "columnaMovil",
+							"sid": 592831437111165,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"bajar\"",
+								"property": "offsetY",
+								"end-value": "columnaMovil.Y_onBottom",
+								"time": "1.5",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 911036506861918
 				},
 				{
-					"id": "set-instvar-value",
-					"objectClass": "columnaMovil",
-					"sid": 706230677169811,
-					"parameters": {
-						"instance-variable": "Y_onTop",
-						"value": "columnaMovil.Y - 150"
-					}
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 745126107866264
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "columnaMovil",
+							"sid": 991981695041468,
+							"parameters": {
+								"instance-variable": "Y_onBottom",
+								"value": "columnaMovil.Y"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "columnaMovil",
+							"sid": 543098286924107,
+							"parameters": {
+								"instance-variable": "Y_onTop",
+								"value": "columnaMovil.Y - 300"
+							}
+						},
+						{
+							"callFunction": "IniciarSubida",
+							"sid": 118869934949050
+						}
+					],
+					"sid": 329573542632204
 				},
 				{
-					"callFunction": "IniciarSubida",
-					"sid": 647100974568708
-				}
-			],
-			"sid": 448746647413302
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-tweens-finished",
-					"objectClass": "columnaMovil",
-					"sid": 856430918797009,
-					"behaviorType": "Tween",
-					"parameters": {
-						"tags": "\"subir\""
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "wait",
-					"objectClass": "System",
-					"sid": 343717639304672,
-					"parameters": {
-						"seconds": "1.5",
-						"use-timescale": true
-					}
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tweens-finished",
+							"objectClass": "columnaMovil",
+							"sid": 480791752734293,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"subir\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 554686080890459,
+							"parameters": {
+								"seconds": "1.5",
+								"use-timescale": true
+							}
+						},
+						{
+							"callFunction": "IniciarBajada",
+							"sid": 613520234202511
+						}
+					],
+					"sid": 250227069183380
 				},
 				{
-					"callFunction": "IniciarBajada",
-					"sid": 227605135170449
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tweens-finished",
+							"objectClass": "columnaMovil",
+							"sid": 786027680054207,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"bajar\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 122606248310967,
+							"parameters": {
+								"seconds": "1.5",
+								"use-timescale": true
+							}
+						},
+						{
+							"callFunction": "IniciarSubida",
+							"sid": 830377339812391
+						}
+					],
+					"sid": 154664820026089
 				}
 			],
-			"sid": 832475769686935
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-tweens-finished",
-					"objectClass": "columnaMovil",
-					"sid": 404846640175363,
-					"behaviorType": "Tween",
-					"parameters": {
-						"tags": "\"bajar\""
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "wait",
-					"objectClass": "System",
-					"sid": 282216129440349,
-					"parameters": {
-						"seconds": "1.5",
-						"use-timescale": true
-					}
-				},
-				{
-					"callFunction": "IniciarSubida",
-					"sid": 797770448509821
-				}
-			],
-			"sid": 271625540420409
+			"sid": 151239314428562
 		}
 	],
 	"sid": 475392875276273
